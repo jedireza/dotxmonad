@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# you'll need a symlink so gnome uses this profile
+#`ln -s ~/.xmonad/bin/xsession ~/.xprofile`
+
+# Configure PATH so that we can access our scripts below
+PATH=$PATH:~/.xmonad/bin
+
+if [ -x "/usr/bin/dropbox" ] ; then
+    dropbox start -i
+fi
+
+# allows transparent window
+if [ -x "/usr/bin/xcompmgr" ] ; then
+    xcompmgr -c &
+fi
+
+# start some programs
+gnome-terminal &
+google-chrome &
+subl &
+/usr/bin/hipchat &
+
+# Start screensaver
+Kill gnome-screensaver if started by default
+killall gnome-screensaver &
+xscreensaver -no-splash &
+
+#non-shitty w98 menus
+gnome-settings-daemon &
+
+#set a wallperp
+~/.xmonad/bin/wallpaper &
