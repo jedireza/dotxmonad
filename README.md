@@ -1,0 +1,4 @@
+dotxmonad
+=========
+
+myxmonad settings
