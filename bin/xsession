@@ -18,6 +18,7 @@ fi
 # start some programs
 gnome-terminal &
 google-chrome &
+gimp &
 subl &
 /usr/bin/hipchat &
 
@@ -29,5 +30,5 @@ xscreensaver -no-splash &
 #non-shitty w98 menus
 gnome-settings-daemon &
 
-#set a wallperp
+#set a wallpaper
 ~/.xmonad/bin/wallpaper &
