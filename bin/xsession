@@ -6,21 +6,14 @@
 # Configure PATH so that we can access our scripts below
 PATH=$PATH:~/.xmonad/bin
 
-if [ -x "/usr/bin/dropbox" ] ; then
-    dropbox start -i
-fi
-
-# allows transparent window
-if [ -x "/usr/bin/xcompmgr" ] ; then
-    xcompmgr -c &
-fi
-
 # start some programs
+dropbox start -i
+xcompmgr -c &
 gnome-terminal &
 google-chrome &
 gimp &
 subl &
-/usr/bin/hipchat &
+hipchat &
 
 # Start screensaver
 Kill gnome-screensaver if started by default

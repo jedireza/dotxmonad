@@ -67,6 +67,8 @@ myManageHook = composeAll
     , className =? "sublime-text-2" --> doShift "2:code"
     , className =? "Gimp"           --> doShift "3:gimp"
     , className =? "Hipchat"        --> doShift "1:web"
+    , resource  =? "desktop_window" --> doIgnore
+    , className =? "stalonetray"    --> doIgnore
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 
@@ -155,6 +157,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      setWorkspaces ["1:web", "2:code"])
   , ((modMask, xK_F2),
      setWorkspaces ["3:gimp", "4:files"])
+  , ((modMask, xK_F3),
+     setWorkspaces ["5", "6"])
+  , ((modMask, xK_F4),
+     setWorkspaces ["7", "8"])
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
