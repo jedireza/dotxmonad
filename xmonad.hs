@@ -37,8 +37,7 @@ setWorkspaces workspaceIds = do
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "/usr/bin/gnome-terminal"
-
+myTerminal = "/usr/bin/terminator"
 
 ------------------------------------------------------------------------
 -- Workspaces
@@ -293,6 +292,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- > logHook = dynamicLogDzen
 --
 
+--define our own fadeInactiveLogHook
+fadeInactiveLogHook' = fadeOutLogHook . fadeIf (propertyToQuery ((Not (ClassName "Google-chrome")) `And` (Not (ClassName "Gimp")) `And` (Not (ClassName "Firefox")) `And` (Not (ClassName "Gcolor2"))))
+myLogHook = fadeInactiveLogHook' 0.8
+
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -307,11 +310,6 @@ myStartupHook = return ()
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
 --
-
---define our own fadeInactiveLogHook
-fadeInactiveLogHook' = fadeOutLogHook . fadeIf (propertyToQuery ((Not (ClassName "Google-chrome")) `And` (Not (ClassName "Gimp")) `And` (Not (ClassName "Firefox")) `And` (Not (ClassName "Gcolor2"))))
-myLogHook = fadeInactiveLogHook' 0.8
-
 
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
